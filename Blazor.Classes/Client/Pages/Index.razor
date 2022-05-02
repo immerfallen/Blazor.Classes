@@ -67,6 +67,14 @@
 }
 <h1>@mensagem</h1>
 
+<h1>@mensagemDataBind</h1>
+
+<h1>@Saudacao()</h1>
+
+<button @onclick="@(()=> AtualizaMensagem())">Atualizar mensagem</button>
+
+<input @bind="@mensagemDataBind"/>
+
 @code {
     string dia = DateTime.Now.DayOfWeek.ToString();
     string mensagem = "";
@@ -104,5 +112,17 @@
                 Nome = "Pizza Mussarella",
                 DataCadastro = DateTime.Now
             };
+    }
+
+    private string mensagemDataBind { get; set; } = "Olá, Maro";
+
+    private string Saudacao()
+    {
+        return "Bem-vindo ao Blazor";
+    }
+
+    private void AtualizaMensagem()
+    {
+        mensagemDataBind = "Olá Blazor, tudo bem ???";
     }
 }
