@@ -1,0 +1,28 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+<h1>10+20 = @Calculo.Somar(10,20)</h1>
+<h1>10-20 = @Calculo.Subtrair(10,20)</h1>
+<h1>10*20 =  @Calculo.Multiplicar(10,20)</h1>
+
+<h1>Pizza</h1>
+<div>
+<h2>Pizza: @Pizza.Nome</h2>
+<h2>Data: @Pizza.DataCadastro.ToString("dd MM yyyy")</h2>
+</div>
+
+@code{
+
+    public Produto Pizza { get { return GetProduto(); }}
+
+    private Produto GetProduto()
+    {
+        return new Produto()
+            {
+                Nome = "Pizza Mussarella",
+                DataCadastro = DateTime.Now
+            };
+    }
+}
