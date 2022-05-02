@@ -9,13 +9,44 @@
 
 <h1>Pizza</h1>
 <div>
-<h2>Pizza: @Pizza.Nome</h2>
-<h2>Data: @Pizza.DataCadastro.ToString("dd MM yyyy")</h2>
+    <h2>Pizza: @Pizza.Nome</h2>
+    <h2>Data: @Pizza.DataCadastro.ToString("dd MM yyyy")</h2>
 </div>
+<hr />
+<h1>Pizzas</h1>
+@foreach(var produto in GetProdutos())
+{
+    <h2> Pizza: @produto.Nome</h2>
+    <h2> Data: @produto.DataCadastro</h2>
+}
 
-@code{
+@code {
 
-    public Produto Pizza { get { return GetProduto(); }}
+    public Produto Pizza { get { return GetProduto(); } }
+
+    public List<Produto> produtos { get { return GetProdutos(); } }
+
+    private List<Produto> GetProdutos()
+    {
+        return new List<Produto>()
+        {
+            new Produto()
+            {
+                Nome = "Pizza Mussarela",
+                DataCadastro = DateTime.Now,
+            },
+            new Produto()
+            {
+                Nome = "Pizza Calabresa",
+                DataCadastro = new DateTime(2022,10,1),
+            },
+            new Produto()
+            {
+                Nome = "Pizza Portuguesa",
+                DataCadastro = new DateTime(2022,2,6),
+            }
+        };
+    }
 
     private Produto GetProduto()
     {
