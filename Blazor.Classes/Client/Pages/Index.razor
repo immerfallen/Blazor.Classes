@@ -7,20 +7,69 @@
 <h1>10-20 = @Calculo.Subtrair(10,20)</h1>
 <h1>10*20 =  @Calculo.Multiplicar(10,20)</h1>
 
-<h1>Pizza</h1>
-<div>
+@*<h1>Pizza</h1>
+    <div>
     <h2>Pizza: @Pizza.Nome</h2>
     <h2>Data: @Pizza.DataCadastro.ToString("dd MM yyyy")</h2>
-</div>
+    </div>*@
 <hr />
 <h1>Pizzas</h1>
-@foreach(var produto in GetProdutos())
+@foreach (var produto in GetProdutos())
 {
-    <h2> Pizza: @produto.Nome</h2>
-    <h2> Data: @produto.DataCadastro</h2>
+    @if (produto.Nome.Contains("Calabresa"))
+    {
+        <h3><b>Pizza de calabresa com desconto de 20%</b></h3>
+    }
+    <ol>
+        <li>
+            <h2> Pizza: @produto.Nome</h2>
+            <h2> Data: @produto.DataCadastro</h2>
+        </li>
+    </ol>
+
 }
 
+<h1>Pizzas</h1>
+@for (int i = 0; i < produtos.Count; i++)
+{
+    @if (i == produtos.Count() - 1)
+    {
+        <h3>Este é o último produto</h3>
+    }
+
+    <ul>
+        <li>
+            <h2>@(i+1) - Pizza: @produtos[i].Nome</h2>
+            <h2> Data: @produtos[i].DataCadastro</h2>
+        </li>
+    </ul>
+
+}
+
+@switch (dia)
+{
+    case "Monday":
+        mensagem = "Esta é o segundo dia da semana";
+        break;
+
+    case "Thursday":
+        mensagem = "Falta um dia para sexta-feira";
+        break;
+
+    case "Friday":
+        mensagem = "Amanhã é 'sabado'";
+        break;
+
+    default:
+        mensagem = "Hoje é o " + dia;
+        break;
+
+}
+<h1>@mensagem</h1>
+
 @code {
+    string dia = DateTime.Now.DayOfWeek.ToString();
+    string mensagem = "";
 
     public Produto Pizza { get { return GetProduto(); } }
 
