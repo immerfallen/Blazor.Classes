@@ -3,11 +3,13 @@
 
 @if (tarefas == null)
 {
-    <p>Carregando...</p>
+    <Alerta Mensagem="Carregando..."></Alerta>
+    @*<p>Carregando...</p>*@
 }
 else if (!tarefas.Any())
 {
-    <p>Ainda não existem tarefas...</p>
+    <Alerta Mensagem="Ainda não existem tarefas..."></Alerta>
+    @*<p>Ainda não existem tarefas...</p>*@
 }
 else
 {
